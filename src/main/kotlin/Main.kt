@@ -16,8 +16,8 @@ fun amountFee(
     TCards != "VK Pay" && amountMonth > (600_000 - amount) -> errorMon
     else -> when { // потом уже переходим на мастеркард, визу и маэстро
         (TCards == "Mastercard" || TCards == "Maestro") && amountMonth > (75000 - amount) -> amount * 6 / 10 / 100 + 20
-        (TCards == "Visa" || TCards == "МИР") && (amount * 75 / 100 / 100) > 35 -> amount * 75 / 100 / 100
-        (TCards == "Visa" || TCards == "МИР") && (amount * 75 / 100 / 100) < 35 -> 35
+        (TCards == "Visa" || TCards == "МИР") && (amount * 75 / 100 / 100) >= 35 -> amount * 75 / 100 / 100
+        (TCards == "Visa" || TCards == "МИР") && (amount * 75 / 100 / 100) =< 35 -> 35
         else -> 0
     }
 }
